@@ -21,7 +21,7 @@ To modify the config.yaml, just change the local config.yaml linked above and re
 ### Modify Config with Default Container 
 
     docker stop sinopia
-    docker run --volumes-from sinopia -it --rm ubuntu vi /opt/sinopia/config.yaml
+    docker run --volumes-from sinopia -it --rm nodesource/node:trusty vi /opt/sinopia/config.yaml
     docker start sinopia
 
 ### Build from Repo
