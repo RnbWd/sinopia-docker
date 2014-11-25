@@ -23,12 +23,14 @@ This docker image uses the [v1.0.0-alpha](https://github.com/rlidwka/sinopia/tre
 `docker run --volumes-from sinopia -it --rm nodesource/node:trusty vi /opt/sinopia/config.yaml`
 `docker restart sinopia`
 
-- To build container from repo
+### Building Custom Containers
 
-`git clone https://github.com/RnbWd/sinopia-docker.git`
-`cd sinopia-docker`
-`docker build -t my/sinopia .`
-`docker run -d -P my/sinopia`
+```
+git clone https://github.com/RnbWd/sinopia-docker.git
+cd sinopia-docker
+docker build -t my/sinopia .
+docker run -d -P my/sinopia
+```
 
 Modify [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) for alternative default configurations or [Dockerfile](https://github.com/RnbWd/sinopia-docker/blob/master/Dockerfile) to change the image source or sinopia version.
 
