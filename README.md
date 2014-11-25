@@ -6,7 +6,7 @@ This docker image uses the [v1.0.0-alpha](https://github.com/rlidwka/sinopia/tre
 
 ### Options
 
-- To run default sinopia on port 4873
+- To run default container on port 4873
 
 `docker run --name sinopia -d -p 4873:4873 rnbwd/sinopia`
 
