@@ -44,10 +44,11 @@ Pull [nginx-ssl-proxy](https://registry.hub.docker.com/u/rnbwd/nginx-ssl-proxy/)
 
 Uncomment 'url_prefix' in [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) and add your own host name
 
-```
-# if you use nginx with custom path, use this to override links
-url_prefix: https://foo.bar.com
-```
+    # if you use nginx with custom path, use this to override links
+    url_prefix: https://foo.bar.com
+
+
+Then run sinopia container with env vars VIRTUAL_HOST and REDIRECT 
 
 Then run sinopia container with env vars VIRTUAL_HOST and REDIRECT 
 
