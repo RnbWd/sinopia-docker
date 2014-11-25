@@ -8,15 +8,15 @@ This docker image uses the [v1.0.0-alpha](https://github.com/rlidwka/sinopia/tre
 
     docker run --name sinopia -d -p 4873:4873 rnbwd/sinopia
 
-    # attach custom config.yaml
+### attach custom config.yaml
 
     docker run -v <local-path-to-config>:/opt/sinopia/config.yaml [...] rnbwd/sinopia
 
-    # modify <local> config?
+### modify <local> config?
 
     docker restart sinopia
 
-    # want to modify config without <local>?
+### modify config without <local> attached?
 
     docker run --volumes-from sinopia -it --rm nodesource/node:trusty vi /opt/sinopia/config.yaml
     docker restart sinopia
