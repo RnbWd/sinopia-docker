@@ -4,8 +4,6 @@
 
 This docker image uses the [v1.0.0-alpha](https://github.com/rlidwka/sinopia/tree/v1.0.0-alpha) release
 
-`npm install -g sinopia@1.0.0-alpha`
-
 ### Creating Default Container
 
 `docker run -d -P rnbwd/sinopia`
