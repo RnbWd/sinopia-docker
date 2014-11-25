@@ -2,19 +2,21 @@
 
 [Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server. 
 
+This docker image uses the [v1.0.0-alpha](https://github.com/rlidwka/sinopia/tree/v1.0.0-alpha) release
+
+`npm install -g sinopia@1.0.0-alpha`
+
 ### Creating Default Container
 
 `docker run -d -P rnbwd/sinopia`
 
 ### Creating Custom Container
 
-
     docker run --name sinopia -v \
       <local-path-to-config.yaml>:/opt/sinopia -d -p \
       4873:4873 rnbwd/sinopia
 
-
-To modify the configuration, just change the local config.yaml linked above and restart the container
+To modify the config.yaml, just change the local config.yaml linked above and restart sinopia.
 
 `docker restart sinopia`
 
