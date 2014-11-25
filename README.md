@@ -14,7 +14,7 @@ This docker image uses the [v1.0.0-alpha](https://github.com/rlidwka/sinopia/tre
 
 `docker run -v <local-path-to-config>:/opt/sinopia/config.yaml [...] rnbwd/sinopia`
 
-- To modify config.yaml, update <local-config> then restart
+- To modify config.yaml, update local config then restart
 
 `docker restart sinopia`
 
