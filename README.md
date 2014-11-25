@@ -20,8 +20,10 @@ This docker image uses the [v1.0.0-alpha](https://github.com/rlidwka/sinopia/tre
 
 - To modify config without attaching local volume
 
-`docker run --volumes-from sinopia -it --rm nodesource/node:trusty vi /opt/sinopia/config.yaml`
-`docker restart sinopia`
+```
+docker run --volumes-from sinopia -it --rm nodesource/node:trusty vi /opt/sinopia/config.yaml
+docker restart sinopia
+```
 
 ### Building Custom Containers
 
