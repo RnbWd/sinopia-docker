@@ -4,24 +4,26 @@
 
 This docker image uses the [v1.0.0-alpha](https://github.com/rlidwka/sinopia/tree/v1.0.0-alpha) release
 
-- Run Container
+### Default Container
+
+- To run default sinopia on port 4873
 
 `docker run --name sinopia -d -p 4873:4873 rnbwd/sinopia`
 
-- attach custom config.yaml
+- To attach a custom config.yaml 
 
 `docker run -v <local-path-to-config>:/opt/sinopia/config.yaml [...] rnbwd/sinopia`
 
-- modify <local> config?
+- To modify config.yaml, update <local-config> then restart
 
 `docker restart sinopia`
 
-- modify config without <local> attached?
+- To modify config without attaching local volume
 
 `docker run --volumes-from sinopia -it --rm nodesource/node:trusty vi /opt/sinopia/config.yaml`
 `docker restart sinopia`
 
-- Build Custom Container
+- To build container from repo
 
 `git clone https://github.com/RnbWd/sinopia-docker.git`
 `cd sinopia-docker`
