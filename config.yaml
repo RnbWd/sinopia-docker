@@ -63,7 +63,7 @@ packages:
 #####################################################################
 
 # if you use nginx with custom path, use this to override links
-# url_prefix: https://repository.foo.com
+#url_prefix: https://repository.foo.com
 
 # you can specify listen address (or simply a port)
 listen: 0.0.0.0:4873

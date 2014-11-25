@@ -27,10 +27,33 @@ docker restart sinopia
 
 ### Building Custom Containers
 
+- From github repository
+
 ```
 git clone https://github.com/RnbWd/sinopia-docker.git
 cd sinopia-docker
 docker build -t my/sinopia .
 docker run -d -P my/sinopia
 ```
+
+- SSL support 
+
+Pull [nginx-ssl-proxy](https://registry.hub.docker.com/u/rnbwd/nginx-ssl-proxy/) 
+
+`docker run -d -p 80:80 -p 443:443 -v <certs-dir>:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock rnbwd/nginx-ssl-proxy`
+
+Uncomment 'url_prefix' in [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) and add your own host name
+
+```
+# if you use nginx with custom path, use this to override links
+url_prefix: https://foo.bar.com
+```
+
+Then run sinopia container with env vars VIRTUAL_HOST and REDIRECT 
+
+`docker run -e VIRTUAL_HOST=foo.bar.com -e REDIRECT=true -v <local-path-to-config>:/opt/sinopia/config.yaml -d -P rnbwd/sinopia`
+
+
+
+
 
