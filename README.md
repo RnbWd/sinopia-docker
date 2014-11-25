@@ -4,7 +4,7 @@
 
 This docker image uses the [v1.0.0-alpha](https://github.com/rlidwka/sinopia/tree/v1.0.0-alpha) release
 
-### Default Container
+### Options
 
 - To run default sinopia on port 4873
 
