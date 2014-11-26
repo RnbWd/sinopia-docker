@@ -1,5 +1,5 @@
 # Pull base image.
-FROM nodesource/node:trusty
+FROM nodesource/node:jessie
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
@@ -9,7 +9,7 @@ ENV SINOPIA_PATH /opt/sinopia
 RUN npm install -g sinopia@$SINOPIA_VERSION
 
 RUN mkdir -p $SINOPIA_PATH/storage
-ADD config.yaml $SINOPIA_PATH/config.yaml
+ADD ../config.yaml $SINOPIA_PATH/config.yaml
 
 VOLUME $SINOPIA_PATH
 
