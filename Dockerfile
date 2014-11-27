@@ -1,10 +1,28 @@
 # Pull base image.
-FROM nodesource/node:trusty
+FROM ubuntu:14.04
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
+RUN echo "deb http://ppa.launchpad.net/node trusty main" > /etc/apt/sources.list.d/node-stable.list
+RUN echo "deb-src http://ppa.launchpad.net/node trusty main" >> /etc/apt/sources.list.d/node-stable.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C300EE8C
+
+RUN apt-get update
+RUN apt-get install -y --force-yes \
+    curl \
+    apt-transport-https \
+    lsb-release \
+    build-essential \
+    python-all \
+    nodejs
+
 ENV SINOPIA_VERSION 1.0.0-alpha
 ENV SINOPIA_PATH /opt/sinopia
+
+RUN npm install -g node-gyp \
+ && npm cache clear
+
+RUN node-gyp configure || echo ""
 
 RUN npm install -g sinopia@$SINOPIA_VERSION
 
