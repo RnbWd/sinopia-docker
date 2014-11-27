@@ -8,7 +8,7 @@ RUN echo "deb-src http://ppa.launchpad.net/chris-lea/node.js/ubuntu trusty main 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C7917B12
 
 RUN apt-get update
-RUN apt-get install -y --force-yes build-essential 
+RUN apt-get install -y build-essential 
 RUN apt-get install -y python
 RUN apt-get install -y nodejs
 RUN rm -rf /var/lib/apt/lists/*
