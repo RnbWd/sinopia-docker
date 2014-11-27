@@ -3,15 +3,12 @@ FROM ubuntu:14.04
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
-RUN echo "deb http://ppa.launchpad.net/node trusty main" > /etc/apt/sources.list.d/node-stable.list
-RUN echo "deb-src http://ppa.launchpad.net/node trusty main" >> /etc/apt/sources.list.d/node-stable.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C300EE8C
+RUN echo "deb http://ppa.launchpad.net/chris-lea/node.js/ubuntu trusty main " > /etc/apt/sources.list.d/node-stable.list
+RUN echo "deb-src http://ppa.launchpad.net/chris-lea/node.js/ubuntu trusty main " >> /etc/apt/sources.list.d/node-stable.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C7917B12
 
 RUN apt-get update
 RUN apt-get install -y --force-yes \
-    curl \
-    apt-transport-https \
-    lsb-release \
     build-essential \
     python-all \
     nodejs
