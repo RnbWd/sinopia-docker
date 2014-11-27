@@ -1,5 +1,5 @@
 # Pull base image.
-FROM ubuntu:14.01 
+FROM ubuntu:14.04
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
