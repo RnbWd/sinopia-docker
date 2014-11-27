@@ -8,18 +8,13 @@ RUN echo "deb-src http://ppa.launchpad.net/chris-lea/node.js/ubuntu trusty main 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C7917B12
 
 RUN apt-get update
-RUN apt-get install -y --force-yes \
-    build-essential \
-    python-all \
-    nodejs
+RUN apt-get install -y --force-yes build-essential 
+RUN apt-get install -y python
+RUN apt-get install -y nodejs
+RUN rm -rf /var/lib/apt/lists/*
 
 ENV SINOPIA_VERSION 1.0.0-alpha
 ENV SINOPIA_PATH /opt/sinopia
-
-RUN npm install -g node-gyp \
- && npm cache clear
-
-RUN node-gyp configure || echo ""
 
 RUN npm install -g sinopia@$SINOPIA_VERSION
 
