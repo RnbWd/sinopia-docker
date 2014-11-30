@@ -8,10 +8,12 @@ RUN echo "deb-src http://ppa.launchpad.net/chris-lea/node.js/ubuntu trusty main 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C7917B12
 
 RUN apt-get update
-RUN apt-get install -y build-essential 
-RUN apt-get install -y python
-RUN apt-get install -y nodejs
-RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y -q --no-install-recommends \
+    build-essential \
+    python \
+    nodejs \
+ && apt-get clean \
+ && rm -r /var/lib/apt/lists/*
 
 ENV SINOPIA_VERSION 1.0.0-alpha
 ENV SINOPIA_PATH /opt/sinopia
@@ -23,9 +25,9 @@ ADD config.yaml $SINOPIA_PATH/config.yaml
 
 VOLUME $SINOPIA_PATH
 
-RUN adduser --disabled-password --gecos 'Sinopia NPM mirror' sinopia
-RUN chown -R sinopia:sinopia $SINOPIA_PATH
-USER sinopia
+#RUN adduser --disabled-password --gecos 'Sinopia NPM mirror' sinopia
+#RUN chown -R sinopia:sinopia $SINOPIA_PATH
+#USER sinopia
 
 WORKDIR $SINOPIA_PATH
 
