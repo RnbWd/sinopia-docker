@@ -40,7 +40,12 @@ docker run -d -P my/sinopia
 
 Pull [nginx-ssl-proxy](https://registry.hub.docker.com/u/rnbwd/nginx-ssl-proxy/) 
 
-`docker run -d -p 80:80 -p 443:443 -v <certs-dir>:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock --name nginx-proxy rnbwd/nginx-ssl-proxy`
+```
+docker run -d -p 80:80 -p 443:443 \ 
+  -v <certs-dir>:/etc/nginx/certs \
+  -v /var/run/docker.sock:/tmp/docker.sock \
+  --name ssl-proxy rnbwd/nginx-ssl-proxy
+```
 
 Uncomment 'url_prefix' in [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) and add your own host name
 
@@ -50,4 +55,8 @@ Uncomment 'url_prefix' in [config.yaml](https://github.com/RnbWd/sinopia-docker/
 
 Then run sinopia container with env vars VIRTUAL_HOST and REDIRECT 
 
-`docker run -e VIRTUAL_HOST=foo.bar.com -e REDIRECT=true -v <local-path-to-config>:/opt/sinopia/config.yaml --name sinopia -d -P rnbwd/sinopia`
+```
+docker run -e VIRTUAL_HOST=foo.bar.com -e REDIRECT=true \
+  -v <local-path-to-config>:/opt/sinopia/config.yaml \
+  --name sinopia -d -P rnbwd/sinopia
+```
