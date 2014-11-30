@@ -17,7 +17,7 @@ RUN apt-get install -y -q --no-install-recommends \
  && apt-get clean \
  && rm -r /var/lib/apt/lists/*
 
-ENV SINOPIA_VERSION 1.0.0-alpha
+ENV SINOPIA_VERSION 1.0.0-alpha.2
 ENV SINOPIA_PATH /opt/sinopia
 
 RUN npm install -g sinopia@$SINOPIA_VERSION
