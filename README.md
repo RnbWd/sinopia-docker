@@ -60,3 +60,26 @@ docker run -e VIRTUAL_HOST=foo.bar.com -e REDIRECT=true \
   -v <local-path-to-config>:/opt/sinopia/config.yaml \
   --name sinopia -d -P rnbwd/sinopia
 ```
+### Backups
+
+`docker run --volumes-from sinopia -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /opt/sinopia`
+
+Alternatively, host path for /opt/sinopia can be determined by running:
+
+`docker inspect sinopia`
+
+### Restore
+
+```
+docker stop sinopia
+docker rm sinopia
+docker run --name sinopia -d -p 4873:4873 keyvanfatehi/sinopia:0.12.0
+docker stop sinopia
+docker run --volumes-from sinopia -v $(pwd):/backup ubuntu tar xvf /backup/backup.tar
+docker start sinopia
+```
+
+## Links
+
+* [Sinopia on Github](https://github.com/rlidwka/sinopia)
+* [nginx-ssl-proxy](https://registry.hub.docker.com/u/rnbwd/nginx-ssl-proxy/)
