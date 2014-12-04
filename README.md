@@ -21,7 +21,7 @@ This docker image uses the [v1.0.0-alpha.2](https://github.com/rlidwka/sinopia/t
 - To modify config without attaching local volume
 
 ```
-docker run --volumes-from sinopia -it --rm ubuntu:14.04 vi /opt/sinopia/config.yaml
+docker run --volumes-from sinopia -it --rm node:slim vi /opt/sinopia/config.yaml
 docker restart sinopia
 ```
 
@@ -62,7 +62,7 @@ docker run -e VIRTUAL_HOST=foo.bar.com -e REDIRECT=true \
 ```
 ### Backups
 
-`docker run --volumes-from sinopia -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /opt/sinopia`
+`docker run --volumes-from sinopia -v $(pwd):/backup node:slim tar cvf /backup/backup.tar /opt/sinopia`
 
 Alternatively, host path for /opt/sinopia can be determined by running:
 
@@ -75,7 +75,7 @@ docker stop sinopia
 docker rm sinopia
 docker run --name sinopia -d -p 4873:4873 keyvanfatehi/sinopia:0.12.0
 docker stop sinopia
-docker run --volumes-from sinopia -v $(pwd):/backup ubuntu tar xvf /backup/backup.tar
+docker run --volumes-from sinopia -v $(pwd):/backup node:slim tar xvf /backup/backup.tar
 docker start sinopia
 ```
 
