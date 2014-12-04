@@ -1,21 +1,7 @@
 # Pull base image.
-FROM ubuntu:14.04
+FROM node:slim
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
-
-# node v0.10.33
-RUN echo "deb http://ppa.launchpad.net/chris-lea/node.js/ubuntu trusty main " > /etc/apt/sources.list.d/node-stable.list
-RUN echo "deb-src http://ppa.launchpad.net/chris-lea/node.js/ubuntu trusty main " >> /etc/apt/sources.list.d/node-stable.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C7917B12
-
-RUN apt-get update
-RUN apt-get install -y -q --no-install-recommends \
-    ca-certificates \
-    build-essential \
-    python \
-    nodejs \
- && apt-get clean \
- && rm -r /var/lib/apt/lists/*
 
 ENV SINOPIA_VERSION 1.0.0-alpha.2
 ENV SINOPIA_PATH /opt/sinopia
