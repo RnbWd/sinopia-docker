@@ -2,7 +2,7 @@
 
 [Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server. 
 
-This docker image uses the [v1.0.0-alpha.2](https://github.com/rlidwka/sinopia/tree/v1.0.0-alpha.2) release
+This docker image uses the [v1.0.0-alpha.3](https://github.com/rlidwka/sinopia/tree/v1.0.0-alpha.3) release
 
 ### Options
 
