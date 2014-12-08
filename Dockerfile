@@ -3,7 +3,7 @@ FROM node:slim
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
-ENV SINOPIA_VERSION 1.0.0-alpha.2
+ENV SINOPIA_VERSION 1.0.0-alpha.3
 ENV SINOPIA_PATH /opt/sinopia
 
 RUN npm install -g yapm 
