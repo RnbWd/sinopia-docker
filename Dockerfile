@@ -14,7 +14,7 @@ RUN rm -rf .git
 RUN yapm install --production
 RUN npm rm -g yapm
 RUN npm cache clean
-ADD config.yaml $SINOPIA_PATH/config.yaml
+COPY config.yaml $SINOPIA_PATH/config.yaml
 EXPOSE 4873
 VOLUME $SINOPIA_PATH
 
