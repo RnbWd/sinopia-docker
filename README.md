@@ -73,7 +73,7 @@ Alternatively, host path for /opt/sinopia can be determined by running:
 ```
 docker stop sinopia
 docker rm sinopia
-docker run --name sinopia -d -p 4873:4873 keyvanfatehi/sinopia:0.12.0
+docker run --name sinopia -d -p 4873:4873 rnbwd/sinopia
 docker stop sinopia
 docker run --volumes-from sinopia -v $(pwd):/backup node:slim tar xvf /backup/backup.tar
 docker start sinopia
