@@ -15,8 +15,7 @@ RUN yapm install --production
 RUN npm rm -g yapm
 RUN npm cache clean
 ADD config.yaml $SINOPIA_PATH/config.yaml
-
-CMD ["./bin/sinopia"]
-
 VOLUME $SINOPIA_PATH
 EXPOSE 4873
+CMD ["./bin/sinopia"]
+
