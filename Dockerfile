@@ -3,8 +3,9 @@ FROM node:slim
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
-ENV SINOPIA_VERSION 1.0.0-alpha.3
+# ENV SINOPIA_VERSION 1.0.0-alpha.3
 ENV SINOPIA_PATH /opt/sinopia
+ENV BACKUP /opt/sinopia/backup
 
 RUN npm install -g yapm 
 WORKDIR /opt
@@ -18,5 +19,6 @@ ADD config.yaml $SINOPIA_PATH/config.yaml
 
 CMD ["./bin/sinopia"]
 
-VOLUME $SINOPIA_PATH
 EXPOSE 4873
+VOLUME $SINOPIA_PATH
+VOLUME $BACKUP
