@@ -5,7 +5,9 @@ MAINTAINER RnbWd <dwisner6@gmail.com>
 
 # Sinopia Version / Path / Backup
 
-ENV version=v1.0.0-beta path=/opt/sinopia backup=/opt/sinopia/backup
+ENV version v1.0.0-beta 
+ENV path /opt/sinopia 
+ENV backup /opt/sinopia/backup
 
 # Install install / clone
 

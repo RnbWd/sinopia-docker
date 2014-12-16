@@ -12,7 +12,8 @@ This docker image uses the [v1.0.0-alpha.3](https://github.com/rlidwka/sinopia/t
 
 - To attach a custom [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml)
 
-`docker run -v <local-path-to-config>:/opt/sinopia/config.yaml [...] rnbwd/sinopia`
+    docker run -v <local-path-to-config>:/opt/sinopia/config.yaml \
+    -d -p 4873:4873 rnbwd/sinopia`
 
 - To modify config.yaml, update local config then restart
 
@@ -32,34 +33,28 @@ docker restart sinopia
 ```
 git clone https://github.com/RnbWd/sinopia-docker.git
 cd sinopia-docker
-docker build -t my/sinopia .
-docker run -d -P my/sinopia
+docker build -t sinopia .
+docker run -d -p 4873:4873 sinopia
 ```
 
-- SSL support 
+- Nginx support 
 
-Pull [nginx-ssl-proxy](https://registry.hub.docker.com/u/rnbwd/nginx-ssl-proxy/) 
+Use [nginx-proxy](https://registry.hub.docker.com/u/rnbwd/nginx/) or [jwilder/nginx-proxy](https://registry.hub.docker.com/u/jwilder/nginx-proxy/)
+
+After running the nginx-proxy, run the sinopia container with env var VIRTUAL_HOST
 
 ```
-docker run -d -p 80:80 -p 443:443 \ 
-  -v <certs-dir>:/etc/nginx/certs \
-  -v /var/run/docker.sock:/tmp/docker.sock \
-  --name ssl-proxy rnbwd/nginx-ssl-proxy
+docker run -e VIRTUAL_HOST=foo.bar.com \
+  -v <local-path-to-config>:/opt/sinopia/config.yaml \
+  --name sinopia -d -P rnbwd/sinopia
 ```
 
-Uncomment 'url_prefix' in [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) and add your own host name
+Uncomment 'url_prefix' in [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) to add your own host name
 
     # if you use nginx with custom path, use this to override links
     url_prefix: https://foo.bar.com
 
 
-Then run sinopia container with env vars VIRTUAL_HOST and REDIRECT 
-
-```
-docker run -e VIRTUAL_HOST=foo.bar.com -e REDIRECT=true \
-  -v <local-path-to-config>:/opt/sinopia/config.yaml \
-  --name sinopia -d -P rnbwd/sinopia
-```
 ### Backups
 
 `docker run --volumes-from sinopia -v $(pwd):/backup node:slim tar cvf /backup/backup.tar /opt/sinopia`
@@ -82,4 +77,4 @@ docker start sinopia
 ## Links
 
 * [Sinopia on Github](https://github.com/rlidwka/sinopia)
-* [nginx-ssl-proxy](https://registry.hub.docker.com/u/rnbwd/nginx-ssl-proxy/)
+* [nginx-proxy](https://registry.hub.docker.com/u/jwilder/nginx-proxy/)
