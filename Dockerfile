@@ -16,7 +16,7 @@ WORKDIR /opt
 RUN git clone https://github.com/rlidwka/sinopia.git
 WORKDIR $path
 RUN git checkout $version
-RUN yapm install --production
+RUN yapm install . --production
 
 # Clean
 
