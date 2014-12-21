@@ -3,7 +3,7 @@ storage: ./storage
 
 web:
   #enable: false
-  title: Sinopia
+  title: Nasync
   logo: logo.png
 
 auth:
@@ -53,7 +53,7 @@ packages:
 
     # allow all known users to publish packages
     # (anyone can register by default, remember?)
-    allow_publish: $authenticated
+    allow_publish: rnbwd
 
     # if package is not available locally, proxy requests to 'npmjs' registry
     proxy: npmjs
@@ -63,7 +63,7 @@ packages:
 #####################################################################
 
 # if you use nginx with custom path, use this to override links
-#url_prefix: https://foo.com
+url_prefix: https://nasync.com
 
 # you can specify listen address (or simply a port)
 listen: 0.0.0.0:4873
@@ -88,7 +88,7 @@ logs:
 
 # maximum size of uploaded json document
 # increase it if you have "request entity too large" errors
-#max_body_size: 1mb
+max_body_size: 500mb
 
 # Workaround for countless npm bugs. Must have for npm <1.14.x, but expect
 # it to be turned off in future versions. If `true`, latest tag is ignored,

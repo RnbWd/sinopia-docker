@@ -3,9 +3,6 @@ FROM node:slim
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
-# Sinopia Version / Path / Backup
-
-ENV version v1.0.0-beta 
 ENV path /opt/sinopia 
 ENV backup /opt/sinopia/backup
 
@@ -13,9 +10,8 @@ ENV backup /opt/sinopia/backup
 
 RUN npm install -g yapm 
 WORKDIR /opt
-RUN git clone https://github.com/rlidwka/sinopia.git
+RUN git clone https://github.com/rnbwd/sinopia.git
 WORKDIR $path
-RUN git checkout $version
 RUN yapm install . --production
 
 # Clean
@@ -25,6 +21,7 @@ RUN npm rm -g yapm
 RUN npm cache clean
 
 ADD config.yaml $path/config.yaml
+# ADD backup.tar $path/backup/backup.tar
 
 CMD ["./bin/sinopia"]
 
