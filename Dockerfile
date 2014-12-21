@@ -7,7 +7,6 @@ MAINTAINER RnbWd <dwisner6@gmail.com>
 
 ENV version v1.0.0-beta 
 ENV path /opt/sinopia 
-ENV backup /opt/sinopia/backup
 
 # Install install / clone
 
@@ -30,4 +29,3 @@ CMD ["./bin/sinopia"]
 
 EXPOSE 4873
 VOLUME $path
-VOLUME $backup
