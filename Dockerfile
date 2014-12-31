@@ -5,7 +5,7 @@ MAINTAINER RnbWd <dwisner6@gmail.com>
 
 # Sinopia Version / Path / Backup
 
-ENV version v1.0.0-beta 
+ENV version v1.0.0-beta.2 
 ENV path /opt/sinopia 
 
 # Install install / clone
@@ -15,7 +15,7 @@ WORKDIR /opt
 RUN git clone https://github.com/rlidwka/sinopia.git
 WORKDIR $path
 RUN git checkout $version
-RUN yapm install . --production
+RUN yapm install --production
 
 # Clean
 
