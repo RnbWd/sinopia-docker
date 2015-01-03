@@ -76,7 +76,11 @@ docker start sinopia
 
 ### CoreOS Service
 
-Example coreOS service that creates / restores backup on restart can be found [here]()
+Example coreOS service that creates / restores backup on restart can be found [here](https://github.com/RnbWd/sinopia-docker/blob/master/sinopia@.service)
+
+First, create a folder /var/sinopia in your coreos container.
+
+Next, I'd recommend starting the service once, updating the config.yaml manually, stopping the service, and then starting the service again. At this point the service should be synced - creating backups when fleetctl stops / starts (necessary for CoreOS updates).
 
 ## Links
 
