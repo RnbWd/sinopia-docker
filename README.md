@@ -2,7 +2,7 @@
 
 [Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server. 
 
-This docker image uses the [v1.0.0-beta](https://github.com/rlidwka/sinopia/tree/v1.0.0-beta) release
+This docker image uses the [v1.0.0-beta.2](https://github.com/rlidwka/sinopia/tree/v1.0.0-beta.2) release
 
 ### Options
 
@@ -57,7 +57,7 @@ Uncomment 'url_prefix' in [config.yaml](https://github.com/RnbWd/sinopia-docker/
 
 ### Backups
 
-`docker run --volumes-from sinopia -v $(pwd):/backup node:slim tar cvf /backup/backup.tar /opt/sinopia`
+`docker run --volumes-from sinopia -v $(pwd):/backup --rm node:slim tar cvf /backup/backup.tar /opt/sinopia`
 
 Alternatively, host path for /opt/sinopia can be determined by running:
 
@@ -70,9 +70,13 @@ docker stop sinopia
 docker rm sinopia
 docker run --name sinopia -d -p 4873:4873 rnbwd/sinopia
 docker stop sinopia
-docker run --volumes-from sinopia -v $(pwd):/backup node:slim tar xvf /backup/backup.tar
+docker run --volumes-from sinopia -v $(pwd):/backup --rm node:slim tar xvf /backup/backup.tar
 docker start sinopia
 ```
+
+### CoreOS Service
+
+Example coreOS service that creates / restores backup on restart can be found [here]()
 
 ## Links
 
