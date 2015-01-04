@@ -76,7 +76,7 @@ docker start sinopia
 
 ### CoreOS Service
 
-Example coreOS service that creates / restores backup on restart can be found [here](https://github.com/RnbWd/sinopia-docker/blob/master/sinopia@.service)
+Example coreOS service that creates / restores backup on restart can be found [here](https://github.com/RnbWd/sinopia-docker/blob/master/sinopia.service)
 
 First, create a folder /var/sinopia in your coreos container.
 

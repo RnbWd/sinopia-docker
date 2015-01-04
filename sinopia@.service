@@ -1,0 +1,29 @@
+[Unit]
+Description=Sinopia
+Wants=nginx@%i.service
+After=etcd.service
+After=docker.service
+
+[Service]
+EnvironmentFile=/etc/environment
+TimeoutStartSec=0
+KillMode=none   
+ExecStartPre=-/usr/bin/docker kill sinopia
+ExecStartPre=-/usr/bin/docker rm sinopia
+ExecStartPre=/usr/bin/docker pull rnbwd/sinopia:rnbwd
+ExecStartPre=/usr/bin/docker run --name sinopia \
+      -e VIRTUAL_HOST=www.%i,%i \
+      -P -d rnbwd/sinopia:rnbwd 
+ExecStartPre=/usr/bin/docker kill sinopia
+ExecStartPre=-/usr/bin/docker run --volumes-from sinopia \
+      -v /var/sinopia:/backup \
+      --rm node:slim tar xvf /backup/backup.tar 
+ExecStart=/usr/bin/docker start -a sinopia 
+ExecStop=/usr/bin/docker stop sinopia
+ExecStopPost=/usr/bin/docker run --volumes-from sinopia \
+      -v /var/sinopia:/backup \
+      --rm node:slim tar cvf /backup/backup.tar /opt/sinopia
+
+[X-Fleet]
+MachineMetadata=url=%i
+Conflicts=sinopia@*.service
