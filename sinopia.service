@@ -11,7 +11,7 @@ ExecStartPre=-/usr/bin/docker kill sinopia
 ExecStartPre=-/usr/bin/docker rm sinopia
 ExecStartPre=/usr/bin/docker pull rnbwd/sinopia
 ExecStartPre=/usr/bin/docker run --name sinopia \
-      -p -p 4873:4873 -d rnbwd/sinopia 
+      -p 4873:4873 -d rnbwd/sinopia 
 ExecStartPre=/usr/bin/docker kill sinopia
 ExecStartPre=-/usr/bin/docker run --volumes-from sinopia \
       -v /var/sinopia:/backup \
