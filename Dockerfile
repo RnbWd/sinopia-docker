@@ -5,27 +5,22 @@ MAINTAINER RnbWd <dwisner6@gmail.com>
 
 # Sinopia Version / Path / Backup
 
-ENV version v1.0.0-beta.2 
-ENV path /opt/sinopia 
+ENV version v1.0.0
 
-# Install install / clone
-
-RUN npm install -g yapm 
-WORKDIR /opt
 RUN git clone https://github.com/rlidwka/sinopia.git
-WORKDIR $path
+WORKDIR /sinopia
 RUN git checkout $version
-RUN yapm install --production
+RUN npm install --production
 
 # Clean
 
 RUN rm -rf .git
-RUN npm rm -g yapm
 RUN npm cache clean
 
-ADD config.yaml $path/config.yaml
+ADD config.yaml /sinopia/config.yaml
 
 CMD ["./bin/sinopia"]
 
 EXPOSE 4873
-VOLUME $path
+
+VOLUME /sinopia/storage
