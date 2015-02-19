@@ -5,7 +5,7 @@ MAINTAINER RnbWd <dwisner6@gmail.com>
 
 # Sinopia Version / Path / Backup
 
-ENV version v1.0.0
+ENV version v1.0.1
 
 RUN git clone https://github.com/rlidwka/sinopia.git
 WORKDIR /sinopia
