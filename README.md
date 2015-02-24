@@ -1,8 +1,8 @@
 ## Sinopia (Docker Image)
 
-[Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server. 
+[Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server.
 
-This docker image uses the [v1.0.0](https://github.com/rlidwka/sinopia/tree/v1.0.0) release
+This docker image uses the [v1.0.1](https://github.com/rlidwka/sinopia/tree/v1.0.0) release
 
 ### Options
 
@@ -10,7 +10,7 @@ This docker image uses the [v1.0.0](https://github.com/rlidwka/sinopia/tree/v1.0
 
 `docker run --name sinopia -d -p 4873:4873 rnbwd/sinopia`
 
-- to sync storage 
+- to sync storage
 
 `docker run --name sinopia -d -p 4873:4873 -v <local-path-to-storage>:/sinopia/storage rnbwd/sinopia`
 
@@ -35,7 +35,7 @@ docker build -t sinopia .
 docker run -d -p 4873:4873 sinopia
 ```
 
-- Nginx support 
+- Nginx support
 
 Use [nginx-proxy](https://registry.hub.docker.com/u/rnbwd/nginx/) or [jwilder/nginx-proxy](https://registry.hub.docker.com/u/jwilder/nginx-proxy/)
 
