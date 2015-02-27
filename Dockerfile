@@ -1,5 +1,5 @@
 # Pull base image.
-FROM node:slim
+FROM rnbwd/node-io:0.10
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
