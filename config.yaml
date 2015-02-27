@@ -84,7 +84,7 @@ logs:
 
 # maximum size of uploaded json document
 # increase it if you have "request entity too large" errors
-max_body_size: 500mb
+# max_body_size: 500mb
 
 # Workaround for countless npm bugs. Must have for npm <1.14.x, but expect
 # it to be turned off in future versions. If `true`, latest tag is ignored,
