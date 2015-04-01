@@ -4,6 +4,8 @@
 
 This docker image uses the [v1.1.0](https://github.com/rlidwka/sinopia/tree/v1.1.0) release
 
+Using with iojs v1.6.3 - let me know if there's any issues with this version
+
 ### Options
 
 - To run default container on port 4873

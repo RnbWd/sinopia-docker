@@ -1,5 +1,5 @@
 # Pull base image.
-FROM rnbwd/node-io:0.10
+FROM rnbwd/node-io:1.6
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
