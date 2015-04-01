@@ -1,5 +1,5 @@
 # path to a directory with all packages
-storage: ./storage
+storage: ./storage/cache
 
 web:
   # enable: true
