@@ -2,9 +2,9 @@
 
 [Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server.
 
-This docker image uses the [v1.1.0](https://github.com/rlidwka/sinopia/tree/v1.1.0) release
+This repo uses [v1.1.0](https://github.com/rlidwka/sinopia/tree/v1.1.0) release with a minor modification to lib/index.js which allows a trust proxy for an nginx container. The maintained repo can be found [here](https://github.com/RnbWd/sinopia/tree/v1.1.0)
 
-Using with iojs v1.6.3 - let me know if there's any issues with this version
+Using with iojs v1.6.3 - let me know if there's any issues with this version. The storage path is also changed in the [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) to handle the edge case where htpasswd is installed via npm.
 
 ### Options
 
