@@ -2,9 +2,9 @@
 
 [Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server.
 
-This repo uses [v1.1.0](https://github.com/rlidwka/sinopia/tree/v1.1.0) release with a minor modification to lib/index.js which allows a trust proxy for an nginx container. The maintained repo can be found [here](https://github.com/RnbWd/sinopia/tree/v1.1.0)
+This repo uses [v1.2.1](https://github.com/rlidwka/sinopia/tree/v1.2.1) release with a minor modification to lib/index.js which allows a trust proxy for an nginx container. The maintained repo can be found [here](https://github.com/RnbWd/sinopia/tree/v1.2.1)
 
-Using with iojs v1.6.3 - let me know if there's any issues with this version. The storage path is also changed in the [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) to handle the edge case where htpasswd is installed via npm.
+Using with iojs v1.7.1 - let me know if there's any issues with this version. The storage path is also changed in the [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) to handle the edge case where htpasswd is installed via npm.
 
 ### Options
 
@@ -49,13 +49,7 @@ docker run -e VIRTUAL_HOST=foo.bar.com \
   --name sinopia -d -P rnbwd/sinopia
 ```
 
-Uncomment 'url_prefix' in [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) to add your own host name
-
-    # if you use nginx with custom path, use this to override links
-    url_prefix: https://foo.bar.com
-
-
 ## Links
 
-* [Sinopia on Github](https://github.com/rlidwka/sinopia)
+* [rnbwd/sinopia](https://github.com/RnbWd/sinopia)
 * [nginx-proxy](https://registry.hub.docker.com/u/jwilder/nginx-proxy/)
