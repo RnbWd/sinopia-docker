@@ -1,13 +1,13 @@
 # Pull base image.
-FROM rnbwd/node-io:1.7.1
+FROM rnbwd/node-io:2.3.1
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
 # Sinopia Version / Path / Backup
 
-ENV version v1.2.1
+ENV version v1.4.0
 
-RUN git clone https://github.com/RnbWd/sinopia.git
+RUN git clone https://github.com/rlidwka/sinopia
 WORKDIR /sinopia
 RUN git checkout $version
 RUN npm install --production
