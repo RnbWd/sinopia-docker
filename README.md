@@ -4,7 +4,7 @@
 
 This repo uses sinopia [v1.4.0](https://github.com/rlidwka/sinopia/tree/v1.4.0).
 
-Using with iojs v2.3.1 - let me know if there's any issues with this version. The storage path is also changed in the [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) to handle the edge case where htpasswd is installed via npm.
+Using with iojs v2.3.x - let me know if there's any issues with this version. The storage path is also changed in the [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) to handle the edge case where htpasswd is installed via npm.
 
 ### Options
 
