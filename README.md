@@ -28,10 +28,10 @@ Using with node v4.1.1 - let me know if there's any issues with this version. Th
 
 *edit [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml)*
 
-docker run -e VIRTUAL_HOST=site.com \
+`docker run -e VIRTUAL_HOST=site.com \
   -v /path/to/storage:/sinopia/storage \
   -v /path/to/config.yaml:/sinopia/config.yaml \
-  --name sinopia -d -P rnbwd/sinopia
+  --name sinopia -d -P rnbwd/sinopia`
 
 ### Optional Usage
 
