@@ -2,11 +2,35 @@
 
 [Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server.
 
-This repo uses sinopia [v1.4.0](https://github.com/rlidwka/sinopia/tree/v1.4.0).
+This repo uses [rnbwd/sinopia](https://github.com/RnbWd/sinopia) for better compatability with docker and [nginx-proxy](https://github.com/RnbWd/nginx).
 
-Using with iojs v2.3.x - let me know if there's any issues with this version. The storage path is also changed in the [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) to handle the edge case where htpasswd is installed via npm.
+Using with node v4.1.1 - let me know if there's any issues with this version. The storage path is also changed in the [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) to handle the edge case where htpasswd is installed via npm.
 
-### Options
+### Recommend Usage
+
+**Generate ssl files on server:**
+
+`mkdir -p /path/to/certs && cd /path/to/certs`
+
+`openssl req -out site.com.csr -new -newkey rsa:2048 -nodes -keyout site.com.key`
+
+`openssl dhparam -out site.com.dhparam.pem 2048`
+
+**Run nginx-proxy container:**
+
+`docker run -d -p 80:80 -p 443:443 -v /path/to/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro rnbwd/nginx`
+
+**Run sinopia container:**
+
+`mkdir -p /path/to/storage`
+
+`mkdir -p /path/to/config.yaml && <edit [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml)>`
+docker run -e VIRTUAL_HOST=site.com \
+  -v /path/to/storage:/sinopia/storage \
+  -v /path/to/config.yaml:/sinopia/config.yaml \
+  --name sinopia -d -P rnbwd/sinopia
+
+### Optional Usage
 
 - To run default container on port 4873
 
@@ -15,7 +39,6 @@ Using with iojs v2.3.x - let me know if there's any issues with this version. Th
 - to sync storage
 
 `docker run --name sinopia -d -p 4873:4873 -v <local-path-to-storage>:/sinopia/storage rnbwd/sinopia`
-
 
 - To attach a custom [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml)
 
