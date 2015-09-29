@@ -24,7 +24,10 @@ Using with node v4.1.1 - let me know if there's any issues with this version. Th
 
 `mkdir -p /path/to/storage`
 
-`mkdir -p /path/to/config.yaml &&` <edit [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml)>
+`mkdir -p /path/to/config.yaml`
+
+*edit [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml)*
+
 docker run -e VIRTUAL_HOST=site.com \
   -v /path/to/storage:/sinopia/storage \
   -v /path/to/config.yaml:/sinopia/config.yaml \
