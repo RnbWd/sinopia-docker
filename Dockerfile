@@ -1,5 +1,5 @@
 # Pull base image.
-FROM rnbwd/node-io:2.3
+FROM rnbwd/node-io:latest
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
@@ -7,9 +7,9 @@ MAINTAINER RnbWd <dwisner6@gmail.com>
 
 ENV version v1.4.0
 
-RUN git clone https://github.com/rlidwka/sinopia
+RUN git clone https://github.com/RnbWd/sinopia.git
 WORKDIR /sinopia
-RUN git checkout $version
+# RUN git checkout $version
 RUN npm install --production
 
 # Clean
