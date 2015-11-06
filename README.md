@@ -2,11 +2,13 @@
 
 [Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server.
 
-This repo uses [rnbwd/sinopia](https://github.com/RnbWd/sinopia) for better compatability with docker and [nginx-proxy](https://github.com/RnbWd/nginx).
+This repo uses [rnbwd/sinopia](https://github.com/RnbWd/sinopia) for better compatability with docker and [nginx-proxy](https://github.com/jwilder/nginx-proxy).
 
-Using with node v4.1.1 - let me know if there's any issues with this version. The storage path is also changed in the [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) to handle the edge case where htpasswd is installed via npm.
+Had to downgrade to node v10 for stability. The storage path is also changed in the [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) to handle the edge case where htpasswd is installed via npm.
 
 ### Recommend Usage
+
+> need to double check this because I probably won't maintain an nginx repo any longer, nginx-proxy by jwilder is 99.9% identical and kept up to speed.
 
 **Generate ssl files on server:**
 
@@ -18,7 +20,7 @@ Using with node v4.1.1 - let me know if there's any issues with this version. Th
 
 **Run nginx-proxy container:**
 
-`docker run -d -p 80:80 -p 443:443 -v /path/to/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro rnbwd/nginx`
+`docker run -d -p 80:80 -p 443:443 -v /path/to/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy`
 
 **Run sinopia container:**
 
@@ -65,17 +67,16 @@ docker run -d -p 4873:4873 sinopia
 
 - Nginx support
 
-Use [nginx-proxy](https://registry.hub.docker.com/u/rnbwd/nginx/) or [jwilder/nginx-proxy](https://registry.hub.docker.com/u/jwilder/nginx-proxy/)
+Use [jwilder/nginx-proxy](https://registry.hub.docker.com/u/jwilder/nginx-proxy/)
 
 After running the nginx-proxy, run the sinopia container with env var VIRTUAL_HOST
 
 ```
 docker run -e VIRTUAL_HOST=foo.bar.com \
   -v <local-path-to-config>:/sinopia/config.yaml \
-  --name sinopia -d -P rnbwd/sinopia
+  --name sinopia -d -P jwilder/sinopia
 ```
 
 ## Links
 
-* [rnbwd/sinopia](https://github.com/RnbWd/sinopia)
 * [nginx-proxy](https://registry.hub.docker.com/u/jwilder/nginx-proxy/)
