@@ -1,28 +1,21 @@
 ## Sinopia (Docker Image)
 
-[Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server.
+[![Docker Stars](https://img.shields.io/docker/stars/rnbwd/sinopia.svg?style=flat-square)](https://hub.docker.com/r/rnbwd/sinopia/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/rnbwd/sinopia.svg?style=flat-square)](https://hub.docker.com/r/rnbwd/sinopia/)
+[![Docker Size](https://img.shields.io/imagelayers/image-size/rnbwd/sinopia/latest.svg?style=flat-square)](https://hub.docker.com/r/rnbwd/sinopia/)
+![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
+
+> [Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server.
 
 This repo uses [rnbwd/sinopia](https://github.com/RnbWd/sinopia) for better compatability with docker and [nginx-proxy](https://github.com/jwilder/nginx-proxy).
 
-Had to downgrade to node v10 for stability. The storage path is also changed in the [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml) to handle the edge case where htpasswd is installed via npm.
-
 ### Recommend Usage
 
-> need to double check this because I probably won't maintain an nginx repo any longer, nginx-proxy by jwilder is 99.9% identical and kept up to speed.
+- To run default container on port 4873
 
-**Generate ssl files on server:**
+`docker run --name sinopia -d -p 4873:4873 rnbwd/sinopia`
 
-`mkdir -p /path/to/certs && cd /path/to/certs`
-
-`openssl req -out site.com.csr -new -newkey rsa:2048 -nodes -keyout site.com.key`
-
-`openssl dhparam -out site.com.dhparam.pem 2048`
-
-**Run nginx-proxy container:**
-
-`docker run -d -p 80:80 -p 443:443 -v /path/to/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy`
-
-**Run sinopia container:**
+- to sync storage / config.yaml
 
 `mkdir -p /path/to/storage`
 
@@ -30,29 +23,21 @@ Had to downgrade to node v10 for stability. The storage path is also changed in 
 
 *edit [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml)*
 
+
+`docker run --name sinopia -d -p 4873:4873 -v <local-path-to-storage>:/sinopia/storage -v <local-path-to-config>:/sinopia/config.yaml rnbwd/sinopia`
+
+- The volume will be synced, so you can update the anything linked outside of the container and it will automatically change the files inside the container. Run `docker restart sinopia` if `config.yaml` is updated.
+
+### Optional Usage
+
+**Run nginx-proxy container:**
+
+`docker run -d -p 80:80 -p 443:443 -v /path/to/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro rnbwd/nginx`
+
 `docker run -e VIRTUAL_HOST=site.com \
   -v /path/to/storage:/sinopia/storage \
   -v /path/to/config.yaml:/sinopia/config.yaml \
   --name sinopia -d -P rnbwd/sinopia`
-
-### Optional Usage
-
-- To run default container on port 4873
-
-`docker run --name sinopia -d -p 4873:4873 rnbwd/sinopia`
-
-- to sync storage
-
-`docker run --name sinopia -d -p 4873:4873 -v <local-path-to-storage>:/sinopia/storage rnbwd/sinopia`
-
-- To attach a custom [config.yaml](https://github.com/RnbWd/sinopia-docker/blob/master/config.yaml)
-
-    docker run -v <local-path-to-config>:/sinopia/config.yaml \
-    -d -p 4873:4873 rnbwd/sinopia`
-
-- To modify config.yaml, update local config then restart
-
-`docker restart sinopia`
 
 ### Building Custom Containers
 
@@ -65,18 +50,7 @@ docker build -t sinopia .
 docker run -d -p 4873:4873 sinopia
 ```
 
-- Nginx support
-
-Use [jwilder/nginx-proxy](https://registry.hub.docker.com/u/jwilder/nginx-proxy/)
-
-After running the nginx-proxy, run the sinopia container with env var VIRTUAL_HOST
-
-```
-docker run -e VIRTUAL_HOST=foo.bar.com \
-  -v <local-path-to-config>:/sinopia/config.yaml \
-  --name sinopia -d -P jwilder/sinopia
-```
 
 ## Links
 
-* [nginx-proxy](https://registry.hub.docker.com/u/jwilder/nginx-proxy/)
+* [rnbwd/nginx](https://registry.hub.docker.com/u/rnbwd/nginx/)
