@@ -13,7 +13,7 @@ RUN npm install --production
 RUN npm cache clean
 
 # Set to non-privileged user
-USER daemon
+# USER daemon
 
 ADD config.yaml /sinopia/config.yaml
 CMD ["./bin/sinopia"]
