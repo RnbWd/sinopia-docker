@@ -17,5 +17,5 @@ EXPOSE 4873
 CMD ["./bin/sinopia"]
 
 VOLUME /sinopia/storage
-VOLUME /sinopia/config.yaml
+
 
