@@ -1,6 +1,10 @@
 # Pull base image.
 <<<<<<< HEAD
+<<<<<<< HEAD
 FROM rnbwd/node-io:lts
+=======
+FROM rnbwd/node-io:0.10
+>>>>>>> parent of fb28019... update node
 =======
 FROM rnbwd/node-io:0.10
 >>>>>>> parent of fb28019... update node
