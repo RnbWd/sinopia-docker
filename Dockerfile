@@ -9,6 +9,8 @@ cd sinopia && npm install --production && npm cache clean
 
 ADD config.yaml /sinopia/config.yaml
 
+WORKDIR sinopia
+
 EXPOSE 4873
 
 CMD ["./bin/sinopia"]
