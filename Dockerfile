@@ -4,14 +4,16 @@ FROM rnbwd/node-io:latest
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
 # Sinopia Version / Path / Backup
-RUN git clone --depth 1 https://github.com/RnbWd/sinopia.git && \
-cd sinopia && npm install --production && npm cache clean
+RUN git clone --depth 1 https://github.com/RnbWd/sinopia.git
 
 WORKDIR sinopia
 
-ADD /config.yaml .
+RUN npm install --production && npm cache clean
+
+ADD /config.yaml ./
 # non privledged user
-USER daemon
+# USER daemon
+VOLUME /sinopia/
 
 EXPOSE 4873
 
