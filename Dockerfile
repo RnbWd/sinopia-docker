@@ -1,5 +1,9 @@
 # Pull base image.
+<<<<<<< HEAD
 FROM rnbwd/node-io:lts
+=======
+FROM rnbwd/node-io:0.10
+>>>>>>> parent of fb28019... update node
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
