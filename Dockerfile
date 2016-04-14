@@ -11,7 +11,7 @@ ADD /config.yaml /sinopia/config.yaml
 
 # non privledged user
 USER daemon
-WIRKDIR sinopia
+WORKDIR sinopia
 EXPOSE 4873
 
 CMD ["./bin/sinopia"]
