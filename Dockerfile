@@ -7,9 +7,7 @@ MAINTAINER RnbWd <dwisner6@gmail.com>
 RUN git clone --depth 1 https://github.com/RnbWd/sinopia.git && \
 cd sinopia && npm install --production && npm cache clean
 
-ADD config.yaml /sinopia/config.yaml
-
-WORKDIR sinopia
+ADD config.yaml config.yaml
 
 EXPOSE 4873
 
