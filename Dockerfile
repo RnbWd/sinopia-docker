@@ -1,22 +1,23 @@
 # Pull base image.
-FROM rnbwd/node-io:0.10.44
+FROM rnbwd/node-io:lts
 
 MAINTAINER RnbWd <dwisner6@gmail.com>
 
 # Sinopia Version / Path / Backup
-RUN git clone --depth 1 https://github.com/RnbWd/sinopia.git
+RUN git clone --depth 1 https://github.com/RnbWd/sinopia.git &&  \
+cd sinopia && \
+npm install --production && \
+npm cache clean
 
-WORKDIR sinopia
+ADD /config.yaml /sinopa/config.yaml
 
-RUN npm install --production && npm cache clean
-
-COPY /config.yaml config.yaml
+WORKDIR /sinopia
+VOLUME /sinopia/storage
 # non privledged user
-# USER daemon
+USER daemon
 EXPOSE 4873
 
 CMD ["./bin/sinopia"]
 
-VOLUME /sinopia/storage
 
 
