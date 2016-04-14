@@ -7,15 +7,15 @@ MAINTAINER RnbWd <dwisner6@gmail.com>
 RUN git clone --depth 1 https://github.com/RnbWd/sinopia.git && \
 cd sinopia && npm install --production && npm cache clean
 
-ADD /config.yaml /sinopia/config.yaml
+WORKDIR sinopia
 
+ADD /config.yaml .
 # non privledged user
 USER daemon
-WORKDIR sinopia
+
 EXPOSE 4873
 
 CMD ["./bin/sinopia"]
 
-VOLUME /sinopia/storage
 
 
