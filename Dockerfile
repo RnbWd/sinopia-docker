@@ -10,14 +10,13 @@ WORKDIR sinopia
 
 RUN npm install --production && npm cache clean
 
-ADD /config.yaml ./
+COPY /config.yaml config.yaml
 # non privledged user
 # USER daemon
-VOLUME /sinopia/
-
 EXPOSE 4873
 
 CMD ["./bin/sinopia"]
 
+VOLUME /sinopia/storage
 
 
