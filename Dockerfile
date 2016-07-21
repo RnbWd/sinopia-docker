@@ -1,8 +1,10 @@
-FROM  mhart/alpine-node:0.10
+FROM node:0.12
 
 MAINTAINER David Wisner <dwisner6@gmail.com>
 
-RUN apk update && apk upgrade && apk add git && adduser -D -S -s /bin/bash -h /sinopia sinopia
+RUN adduser --disabled-password --gecos '' --shell /bin/bash --home /sinopia sinopia && \
+  adduser sinopia sudo && \
+  echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER sinopia
 
