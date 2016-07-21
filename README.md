@@ -3,7 +3,7 @@
 > [Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server.
 
 **Notice**
-> Major update for stability  - currently using the orignal, [unmodified repo](https://github.com/rlidwka/sinopia) and [node v0.10](https://nodejs.org/docs/latest-v0.10.x/api/). The file structure has been modified - the sinopia repo is located at /sinopia/registry. The hotfix for easily using a proxy isn't in the main source (I'll build a new version tagged proxy with my fork).  Eventually this version will be only tagged as stable. See [this issue](https://github.com/rlidwka/sinopia/issues/376) for speculation on the future of sinopia.
+> Major update for stability  - for those who want to use the orignal, [unmodified repo](https://github.com/rlidwka/sinopia) and [node v0.10](https://nodejs.org/docs/latest-v0.10.x/api/), use tag stable. The current latest will be based on my slighly modified version for use with proxies, node v0.12, and tagged proxy / latest (for consistency at the moment). The file structure has been modified - the sinopia repo is located at /sinopia/registry.  See [this issue](https://github.com/rlidwka/sinopia/issues/376) for speculation on the future of sinopia.
 
 ### Recommend Usage
 
