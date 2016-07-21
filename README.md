@@ -3,7 +3,7 @@
 > [Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server.
 
 **Notice**
-> Major update for stability  - currently using the orignal, unmodified repo and node:10
+> Major update for stability  - currently using the orignal, [unmodified repo](https://github.com/rlidwka/sinopia) and [node v0.10](https://nodejs.org/docs/latest-v0.10.x/api/)
 
 ### Recommend Usage
 
