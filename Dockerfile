@@ -2,7 +2,7 @@ FROM  mhart/alpine-node:0.10
 
 MAINTAINER David Wisner <dwisner6@gmail.com>
 
-RUN apk update && apk upgrade && apk add git && adduser -D -S -s /bin/bash -h /sinopia sinopia
+RUN apk update && apk upgrade && apk add git && adduser -D -S -s /bin/sh -h /sinopia sinopia
 
 USER sinopia
 
