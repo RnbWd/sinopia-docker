@@ -1,30 +1,23 @@
-# Pull base image.
-<<<<<<< HEAD
-<<<<<<< HEAD
-FROM rnbwd/node-io:lts
-=======
-FROM rnbwd/node-io:0.10
->>>>>>> parent of fb28019... update node
-=======
-FROM rnbwd/node-io:0.10
->>>>>>> parent of fb28019... update node
+FROM node:0.10
 
-MAINTAINER RnbWd <dwisner6@gmail.com>
+MAINTAINER David Wisner <dwisner6@gmail.com>
 
-# Sinopia Version / Path / Backup
-RUN git clone --depth 1 https://github.com/RnbWd/sinopia.git &&  \
-cd sinopia && \
-npm install --production && \
-npm cache clean
+RUN adduser --disabled-password --gecos '' --shell /bin/bash --home /sinopia sinopia && \
+  adduser sinopia sudo && \
+  echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-ADD /config.yaml /sinopa/config.yaml
+USER sinopia
 
-WORKDIR /sinopia
-VOLUME /sinopia/storage
-# non privledged user
-USER daemon
+RUN git clone --depth 1 https://github.com/rlidwka/sinopia  /sinopia/registry
+
+ADD config.yaml /sinopia/registry/config.yaml
+
+WORKDIR /sinopia/registry
+
+RUN npm install --production && npm cache clean
+
+# VOLUME /sinopia/storage
 EXPOSE 4873
-
 CMD ["./bin/sinopia"]
 
 
