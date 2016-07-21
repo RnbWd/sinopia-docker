@@ -1,4 +1,4 @@
-FROM node:0.10
+FROM node:0.12
 
 MAINTAINER David Wisner <dwisner6@gmail.com>
 
@@ -8,7 +8,7 @@ RUN adduser --disabled-password --gecos '' --shell /bin/bash --home /sinopia sin
 
 USER sinopia
 
-RUN git clone --depth 1 https://github.com/rlidwka/sinopia  /sinopia/registry
+RUN git clone --depth 1 https://github.com/rnbwd/sinopia  /sinopia/registry
 
 ADD config.yaml /sinopia/registry/config.yaml
 
