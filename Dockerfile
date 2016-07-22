@@ -16,7 +16,7 @@ WORKDIR /sinopia/registry
 
 RUN npm install --production && npm cache clean
 
-# VOLUME /sinopia/storage
+VOLUME /sinopia/registry/storage
 EXPOSE 4873
 CMD ["./bin/sinopia"]
 
