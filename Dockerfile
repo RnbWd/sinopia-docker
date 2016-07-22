@@ -1,4 +1,4 @@
-FROM  mhart/alpine-node:0.10
+FROM  mhart/alpine-node:latest
 
 MAINTAINER David Wisner <dwisner6@gmail.com>
 
@@ -14,9 +14,6 @@ WORKDIR /sinopia/registry
 
 RUN npm install --production && npm cache clean
 
-# VOLUME /sinopia/storage
+VOLUME /sinopia/storage
 EXPOSE 4873
 CMD ["./bin/sinopia"]
-
-
-
