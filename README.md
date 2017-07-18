@@ -2,7 +2,7 @@
 
 > [Sinopia](https://github.com/rlidwka/sinopia) is a private npm repository server.
 
-### updates
+-----------
 
 > `docker pull rnbwd/sinopia`
 

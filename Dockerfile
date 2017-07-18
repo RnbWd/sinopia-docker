@@ -1,10 +1,8 @@
-FROM node:0.12
+FROM  node:alpine
 
 MAINTAINER David Wisner <dwisner6@gmail.com>
 
-RUN adduser --disabled-password --gecos '' --shell /bin/bash --home /sinopia sinopia && \
-  adduser sinopia sudo && \
-  echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN apk update && apk upgrade && apk add git && adduser -D -S -s /bin/sh -h /sinopia sinopia
 
 USER sinopia
 
@@ -14,11 +12,8 @@ ADD config.yaml /sinopia/registry/config.yaml
 
 WORKDIR /sinopia/registry
 
-RUN npm install --production && npm cache clean
+RUN npm install --production
 
-VOLUME /sinopia/registry/storage
+VOLUME /sinopia/storage
 EXPOSE 4873
 CMD ["./bin/sinopia"]
-
-
-
