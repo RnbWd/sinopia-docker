@@ -1,4 +1,4 @@
-FROM  mhart/alpine-node:latest
+FROM  node:alpine
 
 MAINTAINER David Wisner <dwisner6@gmail.com>
 
@@ -12,7 +12,7 @@ ADD config.yaml /sinopia/registry/config.yaml
 
 WORKDIR /sinopia/registry
 
-RUN npm install --production && npm cache clean
+RUN npm install --production
 
 VOLUME /sinopia/storage
 EXPOSE 4873
